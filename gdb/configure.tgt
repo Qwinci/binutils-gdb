@@ -552,6 +552,11 @@ riscv*-*-linux*)
 			linux-record.o svr4-tls-tdep.o"
 	;;
 
+riscv64-*-mingw* | riscv64-*-windows*)
+	# Target: RISC-V64 Windows (COFF/PE, SEH unwinding)
+	gdb_target_obs="riscv-windows-tdep.o windows-tdep.o"
+	;;
+
 riscv*-*-*)
 	# Target: RISC-V architecture
 	gdb_target_obs=""
@@ -821,6 +826,8 @@ m68*-*-openbsd* | m88*-*-openbsd* | vax-*-openbsd*) ;;
 *-*-gnu*)	gdb_osabi=GDB_OSABI_HURD ;;
 *-*-mingw32ce*)	gdb_osabi=GDB_OSABI_WINCE ;;
 *-*-mingw*)	gdb_osabi=GDB_OSABI_WINDOWS ;;
+riscv64-*-windows*)
+		gdb_osabi=GDB_OSABI_WINDOWS ;;
 *-*-cygwin*)	gdb_osabi=GDB_OSABI_CYGWIN ;;
 *-*-dicos*)	gdb_osabi=GDB_OSABI_DICOS ;;
 powerpc-*-aix* | rs6000-*-* | powerpc64-*-aix*)

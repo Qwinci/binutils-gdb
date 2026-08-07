@@ -775,6 +775,7 @@ ALL_64_TARGET_OBS = \
 	riscv-none-tdep.o \
 	riscv-ravenscar-thread.o \
 	riscv-tdep.o \
+	riscv-windows-tdep.o \
 	sparc64-fbsd-tdep.o \
 	sparc64-linux-tdep.o \
 	sparc64-netbsd-tdep.o \
@@ -1932,6 +1933,7 @@ ALLDEPFILES = \
 	riscv-none-tdep.c \
 	riscv-ravenscar-thread.c \
 	riscv-tdep.c \
+	riscv-windows-tdep.c \
 	rl78-tdep.c \
 	rs6000-aix-nat.c \
 	rs6000-lynx178-tdep.c \
