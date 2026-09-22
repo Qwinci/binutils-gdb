@@ -1,0 +1,47 @@
+name: Build
+on:
+  push:
+    tags:
+      - "custom-*"
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Disable man-db update
+        run: sudo rm -f /var/lib/man-db/auto-update
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install build-essential libgmp-dev libmpfr-dev libexpat1-dev zlib1g-dev python3-dev -y
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Configure
+        run: |
+          mkdir build
+          cd build
+          ../configure --prefix=/ --disable-binutils --disable-gas --disable-ld --disable-gold --disable-gprof --disable-sim --disable-gprofng --enable-targets=all
+
+      - name: Build
+        run: |
+          cd build
+          make -j$(nproc)
+
+      - name: Install
+        run: |
+          cd build
+          make DESTDIR=$PWD/install/${{ github.ref_name }} -j$(nproc) install
+
+      - name: Package release
+        run: |
+          tar --zstd -cf ${{ github.ref_name }}.tar.zst -C build/install ${{ github.ref_name }}
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: ${{ github.ref_name }}.tar.zst
+
+permissions:
+  contents: write
