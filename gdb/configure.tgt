@@ -143,6 +143,11 @@ aarch64*-*-freebsd*)
 	gdb_target_obs="aarch64-fbsd-tdep.o"
 	;;
 
+aarch64*-*-mingw* | aarch64*-*-windows*)
+	# Target: AArch64 Windows (COFF/PE, SEH unwinding)
+	gdb_target_obs="aarch64-windows-tdep.o windows-tdep.o"
+	;;
+
 aarch64*-*-linux*)
 	# Target: AArch64 linux
 	gdb_target_obs="aarch64-linux-tdep.o arch/aarch64.o\
@@ -827,6 +832,8 @@ m68*-*-openbsd* | m88*-*-openbsd* | vax-*-openbsd*) ;;
 *-*-mingw32ce*)	gdb_osabi=GDB_OSABI_WINCE ;;
 *-*-mingw*)	gdb_osabi=GDB_OSABI_WINDOWS ;;
 riscv64-*-windows*)
+		gdb_osabi=GDB_OSABI_WINDOWS ;;
+aarch64*-*-windows*)
 		gdb_osabi=GDB_OSABI_WINDOWS ;;
 *-*-cygwin*)	gdb_osabi=GDB_OSABI_CYGWIN ;;
 *-*-dicos*)	gdb_osabi=GDB_OSABI_DICOS ;;

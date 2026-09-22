@@ -732,6 +732,7 @@ ALL_64_TARGET_OBS = \
 	aarch64-newlib-tdep.o \
 	aarch64-ravenscar-thread.o \
 	aarch64-tdep.o \
+	aarch64-windows-tdep.o \
 	alpha-bsd-tdep.o \
 	alpha-linux-tdep.o \
 	alpha-mdebug-tdep.o \
@@ -1786,6 +1787,7 @@ ALLDEPFILES = \
 	aarch64-newlib-tdep.c \
 	aarch64-ravenscar-thread.c \
 	aarch64-tdep.c \
+	aarch64-windows-tdep.c \
 	aix-thread.c \
 	alpha-bsd-nat.c \
 	alpha-bsd-tdep.c \
